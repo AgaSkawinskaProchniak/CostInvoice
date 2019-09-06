@@ -2,28 +2,30 @@ package com.skaw.aga.costinvoicedemo.rest;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skaw.aga.costinvoicedemo.dao.CostInvoiceDAO;
+
 import com.skaw.aga.costinvoicedemo.entity.CostInvoice;
+import com.skaw.aga.costinvoicedemo.service.CostInvoiceService;
 
 @RestController
 @RequestMapping("/api")
 public class CostInvoiceRestController {
 	
-	private CostInvoiceDAO costInvoiceDAO;
-	//fuj i blee but quick: inject dao
+	private CostInvoiceService costInvoiceService;
 	
-	public CostInvoiceRestController(CostInvoiceDAO theCostInvoiceDAO) {
-		costInvoiceDAO = theCostInvoiceDAO;
+	@Autowired
+	public CostInvoiceRestController(CostInvoiceService theCostInvoiceService) {
+		costInvoiceService = theCostInvoiceService;
 	}
 	
 	//expose /costInvoice and return list of invoices
 	@GetMapping("/costinvoices")
 	public List<CostInvoice> findAll(){
-		return costInvoiceDAO.findAll();
+		return costInvoiceService.findAll();
 	}
 
 }

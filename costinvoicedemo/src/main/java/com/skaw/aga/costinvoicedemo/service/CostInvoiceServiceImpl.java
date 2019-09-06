@@ -3,11 +3,13 @@ package com.skaw.aga.costinvoicedemo.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skaw.aga.costinvoicedemo.dao.CostInvoiceDAO;
 import com.skaw.aga.costinvoicedemo.entity.CostInvoice;
 
+@Service
 public class CostInvoiceServiceImpl implements CostInvoiceService {
 	
 	private CostInvoiceDAO costInvoiceDAO;
